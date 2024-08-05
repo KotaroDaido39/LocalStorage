@@ -1,31 +1,43 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+    margin: 0 auto;
+    background-color: black;
 }
 
 #dashboard {
+    position: relative;
     max-width: 900px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1{
+    width: 50%;
 }
 
 h1, h2 {
     color: #333;
 }
 
-#apod, #mars {
-    margin-bottom: 30px;
+#NASAicon {
+    position: absolute; /* 親要素に対して絶対位置に設定 */
+    top: 20px; /* 親要素の上端から10px下に配置 */
+    right: 10px; /* 親要素の右端から10px左に配置 */
+    width: 100px; /* 画像の幅を設定 */
+    height: auto; /* アスペクト比を維持 */
 }
 
-#apod img, #mars img {
-    max-width: 100%;
-    margin-top: 10px;
-    border-radius: 4px;
+#apod img {
+    display: block;
+    max-width: 80%; /* 画像の最大幅を設定 */
+    max-height: 80vh; /* 画像の最大高さを設定 */
+    width: auto; /* アスペクト比を維持 */
+    height: auto; /* アスペクト比を維持 */
+    margin: auto; /* 画像を中央に配置 */
+    border-radius: 4px; /* 角を丸くする */
 }
 
 button {
@@ -45,22 +57,51 @@ button:hover {
 
 #bookmark-list {
     position: fixed;
-    right: 0;
+    right: -210px; /* 初期状態では画面外に配置 */
     top: 0;
     width: 200px;
     height: 100%;
     overflow-y: auto;
-    background-color: #f9f9f9;
+    background-color: whitesmoke;
     border-left: 1px solid #ccc;
     padding: 10px;
+    transition: right 0.3s ease; /* スムーズなアニメーション */
+}
+
+#bookmark-list:hover {
+    right: 0; /* マウスを重ねたときに表示 */
 }
 
 .bookmark-item {
     margin-bottom: 10px;
     padding: 5px;
     border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease; /* スムーズな背景色の変化 */
+}
+
+.bookmark-item:hover {
+    background-color: gray; /* 選択されたときの背景色 */
 }
 
 .bookmark-item p{
     display: none;
+}
+
+@keyframes rainbow {
+    0% { color: red; }
+    16% { color: orange; }
+    32% { color: yellow; }
+    48% { color: green; }
+    64% { color: blue; }
+    80% { color: indigo; }
+    100% { color: violet; }
+}
+
+#apod-title {
+    font-size: 2em; /* 文字を大きくする */
+    animation: rainbow 5s infinite; /* レインボーアニメーションを適用 */
+    font-family: 'Courier New', Courier, monospace; /* カクカクした字体にする */
+    padding: 10px; /* パディングを追加して見栄えを良くする */
+    border-radius: 5px; /* 角を丸くする */
+    text-align: center; /* テキストを中央揃えにする */
 }
